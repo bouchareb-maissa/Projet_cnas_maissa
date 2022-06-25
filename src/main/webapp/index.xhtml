@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Formateurs</title>
+        <!-- Favicons -->
+        <link href="assets/img/features-3.png" rel="icon"/>
+        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"/>
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"/>
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"/>
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet"/>
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet"/>
+
+    </h:head>
+    <h:body>
+      
+                <f:view>
+                   <h:link value="go" outcome="ajouterReclamation"/>
+                    <h:link value="login" outcome="login"/>
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                            
+                       <h:dataTable value="#{reclamationController.findAll()}" var="item" border="1">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Id"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Description"/>
+                                </f:facet>
+                                <h:outputText value="#{item.description}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Date"/>
+                                </f:facet>
+                                <h:outputText value="#{item.date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdOperateur"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idOperateur}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdPatient"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPatient}"/>
+                            </h:column>
+                            <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="supp"/>
+                        </f:facet>
+                        <h:commandButton value="supp" action="#{reclamationController.delete(item)}"/>
+                    </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+
+
+    </h:body>
+
+</html>
+
